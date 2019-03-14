@@ -1,5 +1,7 @@
 .navbar__container {
-  height: 4rem;
+  transition: 0.1s;
+  height: 5rem;
+  padding: 0.8rem;
   background: black;
   display: flex;
   align-items: center;
@@ -7,7 +9,6 @@
   .navbar__wrapper {
     display: flex;
     align-items: center;
-    color: white;
     width: 70%;
     margin: auto;
     justify-content: space-around;
@@ -17,11 +18,21 @@
       text-decoration: none;
       color: inherit;
       font-size: 1.6rem;
+      color: rgba($color: #fff, $alpha: 0.7);
+      font-weight: 600;
+      cursor: pointer;
+      &:hover {
+        color: rgba($color: #fff, $alpha: 1);
+        transform: scale(1.1);
+        transition: 0.1s;
+      }
     }
     .navbar-title {
       padding: 0.8rem 1.5rem;
       font-size: 2rem;
       text-transform: uppercase;
+      color: rgba($color: #fff, $alpha: 1);
+      cursor: pointer;
     }
   }
 }
