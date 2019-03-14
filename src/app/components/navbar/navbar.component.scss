@@ -1,0 +1,27 @@
+.navbar__container {
+  height: 4rem;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .navbar__wrapper {
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 70%;
+    margin: auto;
+    justify-content: space-around;
+    .navbar-item {
+      padding: 0.6rem 1.2rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: inherit;
+      font-size: 1.6rem;
+    }
+    .navbar-title {
+      padding: 0.8rem 1.5rem;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+  }
+}
