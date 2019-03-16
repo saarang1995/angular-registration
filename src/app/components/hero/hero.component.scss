@@ -4,19 +4,24 @@
   justify-content: center;
   display: flex;
   align-items: center;
-  background: #000000;
+  background: linear-gradient(
+      rgba($color: #000, $alpha: 0.6),
+      rgba($color: #000, $alpha: 0.6)
+    ),
+    url("/assets/hero-background.jpeg") no-repeat center;
   .hero__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .welcome-heading {
       font-size: 2.3rem;
-      color: rgba($color: #fff, $alpha: 0.8);
+      color: rgba($color: #fff, $alpha: 1);
       font-style: oblique;
       padding: 1.2rem;
       display: flex;
       flex-direction: column;
-      &::after{
+      &::after {
         content: "";
         width: 80%;
         margin: auto;
@@ -30,7 +35,7 @@
       font-size: 4.3rem;
       font-weight: 600;
       padding: 1.2rem;
-      color: rgba($color: #fff, $alpha: 0.8);
+      color: rgba($color: #fff, $alpha: 1);
     }
   }
 }
