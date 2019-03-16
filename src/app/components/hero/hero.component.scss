@@ -41,9 +41,14 @@
       background-image: linear-gradient(to right, #ef5241 0%, #df2674 100%);
       padding: 1.4rem 2.8rem;
       border: none;
-      color: white;
+      color: rgba($color: #fff, $alpha: 1.0);
       font-size: 1.6rem;
       border-radius: 0.4rem;
+      cursor: pointer;
+      &:hover {
+      color: rgba($color: #fff, $alpha: 0.8);
+      opacity: 0.8;
+      }
     }
   }
 }
