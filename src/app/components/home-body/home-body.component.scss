@@ -1,12 +1,21 @@
 .home-body__container {
-  .home-body__wrapper {
-    .services__container {
-      .services__wrapper {
-        .services-title {
+    width: 90%;
+    margin: auto;
+    .home-body__wrapper {
+        .services__container {
+            .services__wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .services-title {
+                    h2 {
+                        font-size: 3rem;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
+                }
+                .services-caraousel__wrapper {}
+            }
         }
-        .services-caraousel__wrapper {
-        }
-      }
     }
-  }
 }
