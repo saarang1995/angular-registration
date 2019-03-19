@@ -3,14 +3,15 @@ import { CommonModule } from "@angular/common";
 import { NavbarComponent } from "../components/navbar/navbar.component";
 import { RegionListComponent } from '../components/region-list/region-list.component';
 import { ServiceHeroComponent } from '../components/service-hero/service-hero.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [NavbarComponent, RegionListComponent, ServiceHeroComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   exports: [
     NavbarComponent,
     RegionListComponent,
-    ServiceHeroComponent
+    ServiceHeroComponent,
   ]
 })
 export class CommonComponentsModule {}

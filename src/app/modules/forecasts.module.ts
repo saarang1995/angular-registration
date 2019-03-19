@@ -9,6 +9,7 @@ const appRoutes: Routes = [{ path: "", component: ForecastsComponent }];
 
 @NgModule({
   declarations: [ForecastsComponent],
+  exports: [ForecastsComponent],
   imports: [
     CommonModule,
     CommonComponentsModule,
