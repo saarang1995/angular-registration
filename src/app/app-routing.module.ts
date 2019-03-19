@@ -8,6 +8,34 @@ const routes: Routes = [
     data: {
       preload: true
     }
+  },
+  {
+    path: "weather-forecasts",
+    loadChildren: "./modules/forecasts.module#ForecastsModule",
+    data: {
+      preload: true
+    }
+  },
+  {
+    path: "weather-alarms",
+    loadChildren: "./modules/weather-alarms.module#WeatherAlarmsModule",
+    data: {
+      preload: true
+    }
+  },
+  {
+    path: "govt-alerts",
+    loadChildren: "./modules/govt-alarms.module#GovtAlarmsModule",
+    data: {
+      preload: true
+    }
+  },
+  {
+    path: "satellite-imagery",
+    loadChildren: "./modules/satellite-imagery.module#SatelliteImageryModule",
+    data: {
+      preload: true
+    }
   }
 ];
 
