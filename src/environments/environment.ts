@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  ACCU_WEATHER_API_KEY: 'KpGujZuD8lj8xle9beOkCVsGZbsgaDnT'
 };
 
 /*

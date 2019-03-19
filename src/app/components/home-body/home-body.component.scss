@@ -26,6 +26,10 @@
             width: 30rem;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
+            &:focus {
+              outline: 0;
+            }
             .service-img {
               background-position: 50% 50%;
               background-repeat: no-repeat;

@@ -1,0 +1,9 @@
+.service-hero__container{
+    .service-hero__img__container{
+        width: 100%;
+        height: calc(100vh - 5rem);
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
