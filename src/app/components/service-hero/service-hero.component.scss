@@ -1,10 +1,24 @@
 .service-hero__container {
   height: calc(100vh - 6rem);
+
   .service-hero__img__container {
     width: 100%;
     height: 100%;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  .service-hero__txt__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba($color: #000000, $alpha: 0.1);
+    span {
+      font-size: 3.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
   }
 }

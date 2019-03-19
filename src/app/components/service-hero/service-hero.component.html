@@ -1,3 +1,6 @@
 <div class="service-hero__container">
-  <div class="service-hero__img__container" [style.background-image]="'url(' + backgroundImage + ')'"></div>
+  <div *ngIf="backgroundImage" class="service-hero__img__container" [style.background-image]="'url(' + backgroundImage + ')'"></div>
+  <div class="service-hero__txt__container">
+    <span>{{backgroundMessage}}</span>
+  </div>
 </div>

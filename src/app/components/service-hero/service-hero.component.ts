@@ -6,8 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./service-hero.component.scss']
 })
 export class ServiceHeroComponent implements OnInit {
-  @Input() backgroundImage: string;
-  @Input() backgroundMessage: string;
+  @Input() backgroundImage?: string;
+  @Input() backgroundMessage?: string;
   constructor() { }
 
   ngOnInit() {
