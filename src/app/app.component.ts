@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(
     private apiService: ApiService
-  ){}
+  ) { }
   ngOnInit(): void {
     if (!StorageService.get(this.STORAGE_REGION_LIST)) {
       this.apiService.fetchRegionList();
