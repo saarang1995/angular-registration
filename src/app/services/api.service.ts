@@ -24,10 +24,9 @@ export class ApiService {
         }
       }).
       subscribe(
-        (data: RegionIntf) => {
+        (data: RegionIntf[]) => {
           this.databaseService.setRegionList(data);
         }, error => {
-
         });
 
   }

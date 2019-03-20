@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { StorageService } from 'src/app/services/storage.service';
+import { RegionIntf } from 'src/app/interfaces/region-Intf';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-region-list',
@@ -9,18 +10,14 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class RegionListComponent implements OnInit {
   private STORAGE_REGION_LIST = "RegionList";
+  regionList: RegionIntf[];
+
   constructor(
-    private apiService: ApiService
-  ) {
-    if (!StorageService.get(this.STORAGE_REGION_LIST)) {
-      this.apiService.fetchRegionList();
-    }
-    else {
-      console.log(StorageService.get(this.STORAGE_REGION_LIST))
-    }
-  }
+    private databaseService: DatabaseService
+  ) { }
 
   ngOnInit() {
+    this.regionList = this.databaseService.getRegionList();
   }
 
 }

@@ -10,7 +10,11 @@ export class DatabaseService {
   private STORAGE_REGION_LIST = "RegionList";
   constructor() { }
 
-  setRegionList(data: RegionIntf) {
+  setRegionList(data: RegionIntf[]) {
     StorageService.set(this.STORAGE_REGION_LIST, data);
+  }
+
+  getRegionList(){
+    return StorageService.get(this.STORAGE_REGION_LIST);
   }
 }
