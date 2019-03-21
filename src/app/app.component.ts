@@ -19,12 +19,7 @@ export class AppComponent {
   
   ngOnInit(): void {
     window["initMap"] = () => {
-      // window["map"] = new google.maps.Map(document.getElementById('map'), {
-      //   center: { lat: -34.397, lng: 150.644 },
-      //   zoom: 8
-      // });
       this.databaseService.googleMapsInitialized.next();
-
       if (!StorageService.get(this.STORAGE_REGION_LIST)) {
         this.apiService.fetchRegionList();
       }

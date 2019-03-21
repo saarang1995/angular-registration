@@ -13,6 +13,9 @@ export class DatabaseService {
   public googleMapsInitialized: Subject<null> = new Subject<null>();
   googleMapsInitialized$: Observable<null> = this.googleMapsInitialized.asObservable();
 
+  private regionsListUpdated: Subject<null> = new Subject<null>();
+  regionsListUpdated$: Observable<null> = this.regionsListUpdated.asObservable();
+
   constructor(
     private geocoderService: GeocoderService
   ) { }
@@ -21,6 +24,7 @@ export class DatabaseService {
     let locationPromises = Promise.all(data.map(d => {
       return new Promise((resolve) => {
         this.geocoderService.codeAddresses(d.EnglishName).then((result) => {
+          console.log(result);
           resolve({
             ...d,
             location: result
@@ -30,10 +34,11 @@ export class DatabaseService {
     }));
     locationPromises.then(result => {
       StorageService.set(this.STORAGE_REGION_LIST, result);
+      this.regionsListUpdated.next();
     })
   }
 
-  getRegionList() {
+  getRegionList(): RegionIntf[]  {
     return StorageService.get(this.STORAGE_REGION_LIST);
   }
 }

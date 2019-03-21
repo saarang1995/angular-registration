@@ -14,7 +14,7 @@ export class GeocoderService {
         if (status == 'OK') {
           resolve({
             lat: results[0].geometry.location.lat(),
-            long: results[0].geometry.location.lng()
+            lng: results[0].geometry.location.lng()
           });
 
         } else {
