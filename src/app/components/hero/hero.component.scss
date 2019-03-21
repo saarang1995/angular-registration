@@ -1,12 +1,12 @@
-@import '../../styles/animations';
+@import '../../styles/common';
 
 .hero__container {
-  height: calc(80vh - 5rem);
+  height: calc(80vh - #{$navBarHeight});
   width: 100vw;
   justify-content: center;
   display: flex;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: $navBarHeight;
   background: linear-gradient(
       rgba($color: #000, $alpha: 0.6),
       rgba($color: #000, $alpha: 0.6)

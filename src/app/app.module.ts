@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CommonComponentsModule } from './modules/common-components.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CommonComponentsModule } from './modules/common-components.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonComponentsModule
+    CommonComponentsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ApiService,

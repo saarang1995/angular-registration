@@ -4,6 +4,8 @@ import { CommonComponentsModule } from "./common-components.module";
 
 import { LoginSignupComponent } from '../components/login-signup/login-signup.component';
 import { Routes, RouterModule } from '@angular/router';
+import { MaterialModule } from './material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [{ path: "", component: LoginSignupComponent }];
 
@@ -12,7 +14,12 @@ const appRoutes: Routes = [{ path: "", component: LoginSignupComponent }];
   imports: [
     CommonModule,
     CommonComponentsModule,
-    RouterModule.forChild(appRoutes)
+    RouterModule.forChild(appRoutes),
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
-export class LoginSignupModule { }
+export class LoginSignupModule {
+
+}

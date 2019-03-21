@@ -1,8 +1,8 @@
+@import '/../../styles/common';
 .navbar__container {
   transition: 0.1s;
-  height: 5rem;
+  height: $navBarHeight;
   top: 0;
-  padding: 0.8rem;
   background: black;
   display: flex;
   align-items: center;

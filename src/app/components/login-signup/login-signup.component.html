@@ -1,3 +1,13 @@
+<app-navbar></app-navbar>
 <div class="login-signup__container">
-    <app-navbar></app-navbar>
+  <div class="form__wrapper">
+    <div class="login-form__container">
+      <form action="" [formGroup]="loginFormGroup">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="emailFormControl" placeholder="Enter your Email">
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
 </div>
