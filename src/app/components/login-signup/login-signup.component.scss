@@ -1,14 +1,19 @@
-@import '../../styles/common';
+@import "../../styles/common";
 
 .login-signup__container {
-    height: calc(100vh - #{$navBarHeight});
-    width: 100vw;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    margin-top: $navBarHeight;
-    .form__wrapper {
-      .login-form__container {
+  height: calc(100vh - #{$navBarHeight});
+  width: 100vw;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-top: $navBarHeight;
+  .form__wrapper {
+    .login-form__container {
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
       }
     }
+  }
 }
