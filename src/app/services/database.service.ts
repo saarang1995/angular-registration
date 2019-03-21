@@ -24,7 +24,6 @@ export class DatabaseService {
     let locationPromises = Promise.all(data.map(d => {
       return new Promise((resolve) => {
         this.geocoderService.codeAddresses(d.EnglishName).then((result) => {
-          console.log(result);
           resolve({
             ...d,
             location: result

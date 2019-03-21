@@ -43,7 +43,8 @@ export class GoogleMapsComponent implements OnInit {
         position: region.location,
         map: window["map"],
         animation: google.maps.Animation.DROP,
-        title: region.EnglishName
+        title: region.EnglishName,
+        label: region.EnglishName
       });
       this.marker.setMap(window["map"]);
     });
