@@ -36,6 +36,13 @@ const routes: Routes = [
     data: {
       preload: true
     }
+  },
+  {
+    path: "login",
+    loadChildren: "./modules/login-signup.module#LoginSignupModule",
+    data: {
+      preload: true
+    }
   }
 ];
 

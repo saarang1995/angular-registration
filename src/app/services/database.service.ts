@@ -37,7 +37,7 @@ export class DatabaseService {
     })
   }
 
-  getRegionList(): RegionIntf[]  {
+  getRegionList(): RegionIntf[] {
     return StorageService.get(this.STORAGE_REGION_LIST);
   }
 }

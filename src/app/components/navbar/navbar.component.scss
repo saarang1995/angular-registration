@@ -24,7 +24,7 @@
       color: rgba($color: #fff, $alpha: 0.7);
       font-weight: 600;
       cursor: pointer;
-      &:hover {
+      &:hover, &.active{
         color: rgba($color: #fff, $alpha: 1);
         transform: scale(1.1);
         transition: 0.1s;
@@ -39,3 +39,4 @@
     }
   }
 }
+
