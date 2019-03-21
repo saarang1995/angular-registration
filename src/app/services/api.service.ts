@@ -28,8 +28,5 @@ export class ApiService {
           this.databaseService.setRegionList(data);
         }, error => {
         });
-
   }
-
-
 }

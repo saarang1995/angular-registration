@@ -6,6 +6,7 @@ import { ConstantService } from './services/constant.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { CommonComponentsModule } from './modules/common-components.module';
 
 @NgModule({
   declarations: [
@@ -14,12 +15,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonComponentsModule
   ],
   providers: [
     ApiService,
     DatabaseService,
-    ConstantService
+    ConstantService,
   ],
   bootstrap: [AppComponent]
 })

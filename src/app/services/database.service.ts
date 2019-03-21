@@ -1,20 +1,39 @@
 import { Injectable } from '@angular/core';
 import { RegionIntf } from '../interfaces/region-Intf';
 import { StorageService } from './storage.service';
-
+import { GeocoderService } from './geocoder-service.service';
+import { Subject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
 
   private STORAGE_REGION_LIST = "RegionList";
-  constructor() { }
+
+  public googleMapsInitialized: Subject<null> = new Subject<null>();
+  googleMapsInitialized$: Observable<null> = this.googleMapsInitialized.asObservable();
+
+  constructor(
+    private geocoderService: GeocoderService
+  ) { }
 
   setRegionList(data: RegionIntf[]) {
-    StorageService.set(this.STORAGE_REGION_LIST, data);
+    let locationPromises = Promise.all(data.map(d => {
+      return new Promise((resolve) => {
+        this.geocoderService.codeAddresses(d.EnglishName).then((result) => {
+          resolve({
+            ...d,
+            location: result
+          })
+        });
+      });
+    }));
+    locationPromises.then(result => {
+      StorageService.set(this.STORAGE_REGION_LIST, result);
+    })
   }
 
-  getRegionList(){
+  getRegionList() {
     return StorageService.get(this.STORAGE_REGION_LIST);
   }
 }
