@@ -10,9 +10,6 @@ export class LoginSignupComponent implements OnInit {
   loginFormGroup: FormGroup;
   constructor() { }
 
-  
- 
-
   ngOnInit(): void {
     this.initialiseLoginForm();
   }
@@ -26,5 +23,9 @@ export class LoginSignupComponent implements OnInit {
         Validators.required
       ])
     });
+  }
+
+  submitForm(){
+
   }
 }

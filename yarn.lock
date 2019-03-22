@@ -102,14 +102,14 @@
     "@angular-devkit/core" "7.1.4"
     rxjs "6.3.3"
 
-"@angular/animations@^7.2.10":
-  version "7.2.10"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-7.2.10.tgz#a651c9526bc0c2860eca424d73d7cd87fee5793b"
-  integrity sha512-WgklBWYKy8LVlugMJ8XgBB4whNiMng8vY6mpaYhza064nsrQXK+ua1anSOGMGlmCI/5i4EgaycTS05XD/C+Kkw==
+"@angular/animations@~7.1.0":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-7.1.4.tgz#6c1ca6b8449bb0fa874343371961fccbe19791bc"
+  integrity sha512-877LZ83scksJtflVz97CUWlSsZnxduBxPD+ls5OTrTT/bq3muzHCm8rgTO7S8fBwwrEVXLorvMAlhDPpMg5Swg==
   dependencies:
     tslib "^1.9.0"
 
-"@angular/cdk@^7.3.5":
+"@angular/cdk@~7.3.5":
   version "7.3.5"
   resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-7.3.5.tgz#1b8a73ebb79371d8e1fe055a74bd5dd9515883a7"
   integrity sha512-5m5HYm/D3/HveZdQQ4wtXk1Vm7bPiV+X5hPgegSHaoX6XONLIwSf821UqE+yYgjalILN44080+p3wHXtQT6Fkg==
@@ -3051,6 +3051,11 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2:
   version "4.1.15"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
+
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
 
 handle-thing@^1.2.5:
   version "1.2.5"

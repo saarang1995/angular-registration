@@ -2,12 +2,12 @@
 <div class="login-signup__container">
   <div class="form__wrapper">
     <div class="login-form__container">
-      <form class="login-form" action="" [formGroup]="loginFormGroup">
-        <mat-form-field appearance="outline">
+      <form class="login-form"(ngSubmit)="submitForm()" [formGroup]="loginFormGroup">
+        <mat-form-field class="form-field" appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput formControlName="emailFormControl" placeholder="Enter your Email">
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field class="form-field" appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="passwordFormControl" placeholder="Enter your Email">
         </mat-form-field>
