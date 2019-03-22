@@ -44,7 +44,11 @@ export class GoogleMapsComponent implements OnInit {
         map: window["map"],
         animation: google.maps.Animation.DROP,
         title: region.EnglishName,
-        label: region.EnglishName
+        label:{
+          text: region.EnglishName,
+          color: "#607d8b"
+        },
+   
       });
       this.marker.setMap(window["map"]);
     });
