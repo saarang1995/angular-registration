@@ -1,16 +1,20 @@
 <app-navbar></app-navbar>
 <div class="login-signup__container">
   <div class="form__wrapper">
+    <div class="title">
+      <span>Welcome</span>
+    </div>
     <div class="login-form__container">
       <form class="login-form"(ngSubmit)="submitForm()" [formGroup]="loginFormGroup">
-        <mat-form-field class="form-field" appearance="outline">
+        <mat-form-field class="form-field" appearance="standard">
           <mat-label>Email</mat-label>
           <input matInput formControlName="emailFormControl" placeholder="Enter your Email">
         </mat-form-field>
-        <mat-form-field class="form-field" appearance="outline">
+        <mat-form-field class="form-field" appearance="standard">
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="passwordFormControl" placeholder="Enter your Email">
         </mat-form-field>
+        <button mat-raised-button>Login</button>
       </form>
     </div>
   </div>

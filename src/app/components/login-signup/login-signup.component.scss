@@ -8,12 +8,29 @@
   align-items: center;
   margin-top: $navBarHeight;
   .form__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 50vh;
+    .title {
+      text-transform: uppercase;
+      font-size: 2.2rem;
+      margin: 2rem;
+    }
     .login-form__container {
+      width: 100%;
+      margin-top: 2rem;
       .login-form {
         display: flex;
         flex-direction: column;
         padding: 1rem;
         font-size: 1.4rem;
+        button{
+          color: white;
+          background: #0d47a1;
+        }
       }
     }
   }
