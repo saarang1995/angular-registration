@@ -1,22 +1,25 @@
-@import './text';
-@import './dimensions';
-@import './animations';
-@import './colors';
+@import "./text";
+@import "./dimensions";
+@import "./animations";
+@import "./colors";
 
 .cta {
-    background-image: linear-gradient(to right, $lightOrange 0%, $lightPink 100%);
-    padding: 1.2rem 2.1rem;
-    border: none;
-    color: rgba($color: #fff, $alpha: 1);
-    font-size: 1.6rem;
-    border-radius: 0.4rem;
-    transition: $transitionTime;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.8;
-    }
+  background-image: linear-gradient(to right, $lightOrange 0%, $lightPink 100%);
+  padding: 1.2rem 2.1rem;
+  border: none;
+  color: rgba($color: #fff, $alpha: 1);
+  font-size: 1.6rem;
+  border-radius: 0.4rem;
+  transition: $transitionTime;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
   }
+}
 
-  .square-shadow {
-    box-shadow: 0rem 0rem 0.8rem -0.2rem rgba($color: #000, $alpha: 0.5);
-  }
+.cta-disabled {
+  opacity: 0.7;
+}
+.square-shadow {
+  box-shadow: 0rem 0rem 0.8rem -0.2rem rgba($color: #000, $alpha: 0.5);
+}

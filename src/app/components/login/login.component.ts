@@ -11,7 +11,7 @@ import { UserDetailsIntf } from 'src/app/interfaces/user-details-intf';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginFormGroup: FormGroup;
+  loginForm: FormGroup;
   userDetails: UserDetailsIntf;
   error: string;
   constructor(
@@ -25,20 +25,22 @@ export class LoginComponent implements OnInit {
   }
 
   private initializeLoginForm() {
-    this.loginFormGroup = new FormGroup({
+    this.loginForm = new FormGroup({
       email: new FormControl("", [
-        Validators.required
+        Validators.required,
+        Validators.email
       ]),
       password: new FormControl("", [
-        Validators.required
+        Validators.required,
+        Validators.minLength(8)
       ])
     });
   }
 
   submitForm() {
     const response = this.databaseService.isExistingUser({
-      email: this.loginFormGroup.controls.email.value,
-      password: this.loginFormGroup.controls.password.value
+      email: this.loginForm.controls.email.value,
+      password: this.loginForm.controls.password.value
     });
 
     if(response.status == "Authorized"){

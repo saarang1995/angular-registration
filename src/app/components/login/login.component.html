@@ -5,7 +5,7 @@
       <div class="title">
         <span>Sign In</span>
       </div>
-      <form class="login-form" (ngSubmit)="submitForm()" [formGroup]="loginFormGroup">
+      <form class="login-form" (ngSubmit)="submitForm()" [formGroup]="loginForm">
         <mat-form-field class="form-field" appearance="standard">
           <mat-label>Email</mat-label>
           <input matInput type="email" formControlName="email" name="email" placeholder="Enter your Email">
@@ -17,7 +17,7 @@
         <div class="error__wrapper" *ngIf="!!error">
           <p>{{error}}</p>
         </div>
-        <button class="cta" mat-raised-button>Login</button>
+        <button [disabled]="loginForm.invalid" type="submit" [ngClass]="{'cta-disabled': loginForm.invalid}" class="cta" mat-raised-button>Login</button>
       </form>
     </div>
   </div>
