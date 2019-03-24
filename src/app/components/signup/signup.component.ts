@@ -42,7 +42,7 @@ export class SignUpComponent implements OnInit {
       password: this.signUpFormGroup.controls.password.value
     });
 
-    if (!this.helperService.getRedirectUrl) {
+    if (!!this.helperService.getRedirectUrl) {
       this.router.navigateByUrl("");
     }
     else {

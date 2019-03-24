@@ -13,7 +13,7 @@ import { UserDetailsIntf } from 'src/app/interfaces/user-details-intf';
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   userDetails: UserDetailsIntf;
-
+  error: string;
   constructor(
     private databaseService: DatabaseService,
     private helperService: HelperService,
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       }
     }
     else {
-      console.error(response.status);
+      this.error = response.status;
     }   
   }
 }

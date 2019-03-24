@@ -1,10 +1,10 @@
 @import './text';
 @import './dimensions';
 @import './animations';
-
+@import './colors';
 
 .cta {
-    background-image: linear-gradient(to right, #ef5241 0%, #df2674 100%);
+    background-image: linear-gradient(to right, $lightOrange 0%, $lightPink 100%);
     padding: 1.2rem 2.1rem;
     border: none;
     color: rgba($color: #fff, $alpha: 1);
@@ -15,4 +15,8 @@
     &:hover {
       opacity: 0.8;
     }
+  }
+
+  .square-shadow {
+    box-shadow: 0rem 0rem 0.8rem -0.2rem rgba($color: #000, $alpha: 0.5);
   }

@@ -8,27 +8,38 @@
   align-items: center;
   margin-top: $navBarHeight;
   .form__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30vw;
-    height: 50vh;
-    .title {
-      text-transform: uppercase;
-      font-size: 2.2rem;
-      margin: 2rem;
-    }
-    .login-form {
-      width: 100%;
-      margin-top: 2rem;
+    max-width: 42rem;
+    width: 90%;
+    .inner__wrapper {
       display: flex;
       flex-direction: column;
-      padding: 1rem;
-      font-size: 1.4rem;
-      button {
-        margin-top: 2.5rem;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+      
+      .title {
         text-transform: uppercase;
+        font-size: 2.2rem;
+        width: 100%;
+        text-align: center;
+      }
+      .login-form {
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.4rem;
+        width: 100%;
+        .error__wrapper{
+          p{
+            color: #{$lightOrange};
+            font-weight: 400;
+            font-size: 1.2rem;
+          }
+        }
+        button {
+          margin-top: 2.5rem;
+          text-transform: uppercase;
+        }
       }
     }
   }
