@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  isUserLoggedIn: boolean;
+  constructor(
+    private database: DatabaseService
+  ) { }
 
   ngOnInit() {
+    this.database.userDetailsChangeEvent$.subscribe(()=>{
+      this.isUserLoggedIn = this.database.isUserLoggedIn();
+    });
+    this.isUserLoggedIn = this.database.isUserLoggedIn();
   }
+
 
 }

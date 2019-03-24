@@ -40,19 +40,5 @@
       padding: 1.2rem;
       color: rgba($color: #fff, $alpha: 1);
     }
-    .login-button {
-      margin: 1.2rem;
-      background-image: linear-gradient(to right, #ef5241 0%, #df2674 100%);
-      padding: 1.4rem 2.8rem;
-      border: none;
-      color: rgba($color: #fff, $alpha: 1);
-      font-size: 1.6rem;
-      border-radius: 0.4rem;
-      transition: $transitionTime;
-      cursor: pointer;
-      &:hover {
-        opacity: 0.8;
-      }
-    }
   }
 }

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 import { HelperService } from 'src/app/services/helper.service';
 import { Router } from '@angular/router';
+import { UserDetailsIntf } from 'src/app/interfaces/user-details-intf';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
+  userDetails: UserDetailsIntf;
 
   constructor(
     private databaseService: DatabaseService,
@@ -34,16 +36,21 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm() {
-    this.databaseService.setUserDetails({
+    const response = this.databaseService.isExistingUser({
       email: this.loginFormGroup.controls.email.value,
       password: this.loginFormGroup.controls.password.value
     });
 
-    if(!this.helperService.getRedirectUrl){
-      this.router.navigateByUrl("");
+    if(response.status == "Authorized"){
+      if (!this.helperService.getRedirectUrl) {
+        this.router.navigateByUrl("");
+      }
+      else {
+        this.helperService.performRedirectIfAny();
+      }
     }
     else {
-      this.helperService.performRedirectIfAny();
-    }
+      console.error(response.status);
+    }   
   }
 }

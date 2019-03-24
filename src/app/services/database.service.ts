@@ -4,6 +4,7 @@ import { StorageService } from './storage.service';
 import { GeocoderService } from './geocoder-service.service';
 import { Subject, Observable } from 'rxjs';
 import { UserDetailsIntf } from '../interfaces/user-details-intf';
+import { AuthResponse } from '../interfaces/auth-response-intf';
 @Injectable({
   providedIn: 'root'
 })
@@ -60,5 +61,23 @@ export class DatabaseService {
 
   isUserLoggedIn() {
     return !!this.userDetails;
+  }
+
+  isExistingUser(user: UserDetailsIntf): AuthResponse {
+    const userData = this.getUserDetails();
+    if (!!userData) {
+      if (user.email == userData.email) {
+        if (user.password == userData.password) {
+          return { status: "Authorized" };
+        }
+        else {
+          return { status: "Incorrect Password" };
+        }
+      }
+    }
+    else {
+      return { status: "Not Registered" };
+    }
+
   }
 }

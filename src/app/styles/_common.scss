@@ -1,3 +1,18 @@
 @import './text';
 @import './dimensions';
 @import './animations';
+
+
+.cta {
+    background-image: linear-gradient(to right, #ef5241 0%, #df2674 100%);
+    padding: 1.2rem 2.1rem;
+    border: none;
+    color: rgba($color: #fff, $alpha: 1);
+    font-size: 1.6rem;
+    border-radius: 0.4rem;
+    transition: $transitionTime;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }

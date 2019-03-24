@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="629" height="253" viewBox="0 0 629 253">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.305" y1="0.305" x2="0.677" y2="0.677" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ef5241"/>
+      <stop offset="1" stop-color="#df2674"/>
+    </linearGradient>
+    <filter id="RecknWeather" x="252" y="93" width="344" height="77" filterUnits="userSpaceOnUse">
+      <feOffset dx="5" dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1" data-name="Group 1" transform="translate(-614 -230)">
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="629" height="253" rx="10" transform="translate(614 230)" fill="#fafafe"/>
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="150" height="150" rx="34" transform="translate(750 250) rotate(45)" fill="url(#linear-gradient)"/>
+    <g transform="matrix(1, 0, 0, 1, 614, 230)" filter="url(#RecknWeather)">
+      <text id="RecknWeather-2" data-name="RecknWeather" transform="translate(256 145)" fill="#777272" font-size="50" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">RecknWeather</tspan></text>
+    </g>
+  </g>
+</svg>
