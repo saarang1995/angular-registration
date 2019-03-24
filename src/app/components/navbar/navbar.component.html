@@ -2,8 +2,19 @@
   <div class="navbar__wrapper">
     <a class="navbar-item" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
     <div class="navigators-wrapper" *ngIf="!isUserLoggedIn">
-        <a class="navbar-item" routerLink="/login" routerLinkActive="active">Login</a>
-        <button class="cta" routerLink="/signup" routerLinkActive="active">Create Account</button>
+      <a class="navbar-item" routerLink="/login" routerLinkActive="active">Login</a>
+      <button class="cta" routerLink="/signup" routerLinkActive="active">Create Account</button>
+    </div>
+    <div class="profile-wrapper" *ngIf="isUserLoggedIn">
+      <img src="assets/icons/account.svg" alt="Profile" [matMenuTriggerFor]="menu">
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item (click)="logoutUser()">
+          <span>Logout</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
 </div>

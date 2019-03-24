@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,15 +11,18 @@ export class NavbarComponent implements OnInit {
 
   isUserLoggedIn: boolean;
   constructor(
-    private database: DatabaseService
+    private databaseService: DatabaseService,
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
-    this.database.userDetailsChangeEvent$.subscribe(()=>{
-      this.isUserLoggedIn = this.database.isUserLoggedIn();
+    this.databaseService.userDetailsChangeEvent$.subscribe(() => {
+      this.isUserLoggedIn = this.databaseService.isUserLoggedIn();
     });
-    this.isUserLoggedIn = this.database.isUserLoggedIn();
+    this.isUserLoggedIn = this.databaseService.isUserLoggedIn();
   }
 
-
+  logoutUser() {
+    this.apiService.logoutUser(true);
+  }
 }

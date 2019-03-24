@@ -26,7 +26,9 @@ export class DatabaseService {
 
   constructor(
     private geocoderService: GeocoderService
-  ) { }
+  ) {
+    this.initUserDetails();
+  }
 
   setRegionList(data: RegionIntf[]) {
     let locationPromises = Promise.all(data.map(d => {
@@ -49,17 +51,37 @@ export class DatabaseService {
     return StorageService.get(this.STORAGE_REGION_LIST);
   }
 
-  setUserDetails(user: UserDetailsIntf) {
-    this.userDetails = { ...user };
-    StorageService.set(this.STORAGE_KEY_USER, user);
+  private initUserDetails() {
+    if (!this.userDetails) {
+      const userdata = StorageService.get(this.STORAGE_KEY_USER);
+      if (userdata) {
+        this.setUserDetails(userdata, false);
+      }
+    }
+  }
+
+  setUserDetails(user: UserDetailsIntf, saveChangeToStorage: boolean = true) {
+    if (user == null) {
+      this.userDetails = null;
+    } else {
+      this.userDetails = { ...user };
+    }
+    if (saveChangeToStorage) {
+      StorageService.set(this.STORAGE_KEY_USER, user);
+    }
     this.userDetailsChangeEvent.next();
+  }
+
+  deleteUserDetails() {
+    this.setUserDetails(null, false);
+    StorageService.delete(this.STORAGE_KEY_USER);
   }
 
   getUserDetails(): UserDetailsIntf {
     return this.userDetails;
   }
 
-  isUserLoggedIn() {
+  isUserLoggedIn(): boolean {
     return !!this.userDetails;
   }
 

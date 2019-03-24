@@ -1,4 +1,5 @@
 @import "/../../styles/common";
+
 .navbar__container {
   transition: 0.1s;
   height: $navBarHeight;
@@ -36,6 +37,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    .profile-wrapper {
+      cursor: pointer;
+      opacity: 0.8;
+      img {
+        width: 4rem;
+        height: 4rem;
+      }
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }
