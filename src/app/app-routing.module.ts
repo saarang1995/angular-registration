@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: "weather-forecasts",
+    canActivate: [AuthenticationGuard],
     loadChildren: "./modules/forecasts.module#ForecastsModule",
     data: {
       preload: true
@@ -18,6 +20,7 @@ const routes: Routes = [
   },
   {
     path: "weather-alarms",
+    canActivate: [AuthenticationGuard],
     loadChildren: "./modules/weather-alarms.module#WeatherAlarmsModule",
     data: {
       preload: true
@@ -25,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: "govt-alerts",
+    canActivate: [AuthenticationGuard],
     loadChildren: "./modules/govt-alarms.module#GovtAlarmsModule",
     data: {
       preload: true
@@ -32,6 +36,7 @@ const routes: Routes = [
   },
   {
     path: "satellite-imagery",
+    canActivate: [AuthenticationGuard],
     loadChildren: "./modules/satellite-imagery.module#SatelliteImageryModule",
     data: {
       preload: true

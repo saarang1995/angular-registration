@@ -3,18 +3,25 @@ import { RegionIntf } from '../interfaces/region-Intf';
 import { StorageService } from './storage.service';
 import { GeocoderService } from './geocoder-service.service';
 import { Subject, Observable } from 'rxjs';
+import { UserDetailsIntf } from '../interfaces/user-details-intf';
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
 
   private STORAGE_REGION_LIST = "RegionList";
+  private STORAGE_KEY_USER = "UserDetails";
+
+  private userDetails: UserDetailsIntf;
 
   public googleMapsInitialized: Subject<null> = new Subject<null>();
   googleMapsInitialized$: Observable<null> = this.googleMapsInitialized.asObservable();
 
   private regionsListUpdated: Subject<null> = new Subject<null>();
   regionsListUpdated$: Observable<null> = this.regionsListUpdated.asObservable();
+
+  private userDetailsChangeEvent: Subject<null> = new Subject<null>();
+  userDetailsChangeEvent$: Observable<null> = this.userDetailsChangeEvent.asObservable();
 
   constructor(
     private geocoderService: GeocoderService
@@ -39,5 +46,19 @@ export class DatabaseService {
 
   getRegionList(): RegionIntf[] {
     return StorageService.get(this.STORAGE_REGION_LIST);
+  }
+
+  setUserDetails(user: UserDetailsIntf) {
+    this.userDetails = { ...user };
+    StorageService.set(this.STORAGE_KEY_USER, user);
+    this.userDetailsChangeEvent.next();
+  }
+
+  getUserDetails(): UserDetailsIntf {
+    return this.userDetails;
+  }
+
+  isUserLoggedIn() {
+    return !!this.userDetails;
   }
 }

@@ -5,14 +5,18 @@
       <span>Welcome</span>
     </div>
     <div class="login-form__container">
-      <form class="login-form"(ngSubmit)="submitForm()" [formGroup]="loginFormGroup">
+      <form class="login-form" (ngSubmit)="submitForm()" [formGroup]="loginFormGroup">
+        <mat-form-field class="form-field" appearance="standard">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="nameControl" placeholder="Enter your Name">
+        </mat-form-field>
         <mat-form-field class="form-field" appearance="standard">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="emailFormControl" placeholder="Enter your Email">
+          <input matInput type="email" formControlName="emailControl" placeholder="Enter your Email">
         </mat-form-field>
         <mat-form-field class="form-field" appearance="standard">
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="passwordFormControl" placeholder="Enter your Email">
+          <input matInput type="password" formControlName="passwordControl" placeholder="Enter your Password">
         </mat-form-field>
         <button mat-raised-button>Login</button>
       </form>
