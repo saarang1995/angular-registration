@@ -5,15 +5,19 @@ import { RegionListComponent } from '../components/region-list/region-list.compo
 import { ServiceHeroComponent } from '../components/service-hero/service-hero.component';
 import { RouterModule } from '@angular/router';
 import { GoogleMapsComponent } from '../components/google-maps/google-maps.component';
+import { MaterialModule } from './material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [NavbarComponent, RegionListComponent, ServiceHeroComponent, GoogleMapsComponent],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule],
   exports: [
     NavbarComponent,
     RegionListComponent,
     ServiceHeroComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
-export class CommonComponentsModule {}
+export class CommonComponentsModule { }

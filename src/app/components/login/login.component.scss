@@ -1,0 +1,36 @@
+@import "../../styles/common";
+
+.login__container {
+  height: calc(100vh - #{$navBarHeight});
+  width: 100vw;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-top: $navBarHeight;
+  .form__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 50vh;
+    .title {
+      text-transform: uppercase;
+      font-size: 2.2rem;
+      margin: 2rem;
+    }
+    .login-form {
+      width: 100%;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      font-size: 1.4rem;
+      button {
+        margin-top: 2.5rem;
+        color: white;
+        background: #0d47a1;
+      }
+    }
+  }
+}

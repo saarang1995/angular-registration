@@ -1,6 +1,6 @@
 @import "../../styles/common";
 
-.login-signup__container {
+.signup__container {
   height: calc(100vh - #{$navBarHeight});
   width: 100vw;
   justify-content: center;
@@ -19,19 +19,17 @@
       font-size: 2.2rem;
       margin: 2rem;
     }
-    .login-form__container {
+    .signup-form {
       width: 100%;
       margin-top: 2rem;
-      .login-form {
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        font-size: 1.4rem;
-        button{
-          margin-top: 2.5rem;
-          color: white;
-          background: #0d47a1;
-        }
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      font-size: 1.4rem;
+      button {
+        margin-top: 2.5rem;
+        color: white;
+        background: #0d47a1;
       }
     }
   }
