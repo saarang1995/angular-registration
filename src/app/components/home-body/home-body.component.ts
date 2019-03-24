@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-home-body',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeBodyComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private helperService: HelperService
+  ) { }
 
   ngOnInit() {
   }
-
+  setRedirectUrl(url: string) {
+    this.helperService.setRedirectUrl(url);
+  }
 }

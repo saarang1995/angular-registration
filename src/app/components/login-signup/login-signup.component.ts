@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserDetailsIntf } from 'src/app/interfaces/user-details-intf';
 import { DatabaseService } from 'src/app/services/database.service';
+import { HelperService } from 'src/app/services/helper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-signup',
@@ -12,7 +14,9 @@ export class LoginSignupComponent implements OnInit {
   loginFormGroup: FormGroup;
 
   constructor(
-    private databaseService: DatabaseService
+    private databaseService: DatabaseService,
+    private helperService: HelperService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -21,13 +25,13 @@ export class LoginSignupComponent implements OnInit {
 
   private initializeLoginForm() {
     this.loginFormGroup = new FormGroup({
-      nameControl: new FormControl("",[
+      name: new FormControl("",[
         Validators.required
       ]),
-      emailControl: new FormControl("", [
+      email: new FormControl("", [
         Validators.required
       ]),
-      passwordControl: new FormControl("", [
+      password: new FormControl("", [
         Validators.required
       ])
     });
@@ -35,9 +39,16 @@ export class LoginSignupComponent implements OnInit {
 
   submitForm() {
     this.databaseService.setUserDetails({
-      email: this.loginFormGroup.controls.emailControl.value,
-      name: this.loginFormGroup.controls.nameControl.value,
-      password: this.loginFormGroup.controls.passwordControl.value
+      email: this.loginFormGroup.controls.email.value,
+      name: this.loginFormGroup.controls.name.value,
+      password: this.loginFormGroup.controls.password.value
     });
+
+    if(!this.helperService.getRedirectUrl){
+      this.router.navigateByUrl("");
+    }
+    else {
+      this.helperService.performRedirectIfAny();
+    }
   }
 }
