@@ -1,6 +1,8 @@
+@import "../../styles/common";
+
 .service-hero__container {
-  height: calc(100vh - 6rem);
-  margin-top: 5rem;
+  height: calc(100vh - #{$navBarHeight});
+  margin-top: $navBarHeight;
   .service-hero__img__container {
     width: 100%;
     height: 100%;

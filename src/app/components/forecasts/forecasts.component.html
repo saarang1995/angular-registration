@@ -1,11 +1,12 @@
 <div class="forecasts__container">
   <app-navbar></app-navbar>
-  <app-service-hero 
-    backgroundMessage="Now get Forecasts of your favorite region"></app-service-hero>
-  <div class="region-list__container">
-    <div class="title">
-      <h2>We provide Forecast data for below Regions</h2>
+  <div class="forecast_cards__container">
+    <div class="add_forecasts__container" *ngIf="!existingForecastPreferences">
+      <button class="cta">Add a place</button>
     </div>
-    <app-region-list></app-region-list>
   </div>
+</div>
+
+<div class="add_forecasts__popup">
+  
 </div>

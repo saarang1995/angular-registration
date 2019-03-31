@@ -20,11 +20,7 @@ export class ApiService {
 
   fetchRegionList() {
     return this.http.
-      get(this.FETCH_REGION_REQUEST, {
-        params: {
-          apikey: ConstantService.API_KEY
-        }
-      }).
+      get(this.FETCH_REGION_REQUEST).
       subscribe(
         (data: RegionIntf[]) => {
           this.databaseService.setRegionList(data);

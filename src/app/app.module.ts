@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CommonComponentsModule } from './modules/common-components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainInterceptor } from './interceptors/main.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ApiService,
     DatabaseService,
     ConstantService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MainInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -12,6 +12,7 @@
   border-radius: 0.4rem;
   transition: $transitionTime;
   cursor: pointer;
+  &:focus {outline:0;}
   &:hover {
     opacity: 0.8;
   }

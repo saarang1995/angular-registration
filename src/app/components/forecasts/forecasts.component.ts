@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForecastsComponent implements OnInit {
 
+  existingForecastPreferences: boolean = false;
+
   constructor() { }
 
   ngOnInit() {

@@ -1,0 +1,13 @@
+@import "../../styles/common";
+
+.forecasts__container {
+  .forecast_cards__container {
+    height: calc(100vh - #{$navBarHeight});
+    margin-top: $navBarHeight;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .add_forecasts__container {
+    }
+  }
+}
