@@ -20,7 +20,7 @@ export class ForecastsComponent implements OnInit {
   forecastForm: FormGroup;
   topCities: any = [];
   forecastList: ForecastIntf[];
-
+  cityDetail: CityDetailIntf;
   constructor(
     private databaseService: DatabaseService,
     private apiService: ApiService
@@ -37,10 +37,7 @@ export class ForecastsComponent implements OnInit {
     });
     this.databaseService.forecastListChangeEvent$.subscribe(() => {
       this.forecastList = this.databaseService.getDailyForecasts();
-      debugger;
     });
-    debugger;
-
   }
 
   private initializeForecastForm() {
@@ -55,17 +52,31 @@ export class ForecastsComponent implements OnInit {
     this.showForecastPopup = status;
   }
 
-  setCityForForecast(cityDetail: any) {
-    const cityName = cityDetail.selectedOptions[0].innerText;
-    const locationKey = cityDetail.value;
+  setCityForForecast(selectedCity: any) {
+    const cityName = selectedCity.selectedOptions[0].innerText;
+    const locationKey = selectedCity.value;
+
     if (!cityName && !locationKey) {
       return;
     }
-    this.apiService.fetchForecastForDay(cityName, locationKey);
+    this.cityDetail = {
+      cityName: cityName,
+      locationKey: locationKey
+    };
+  }
+
+  addForecast() {
+    this.apiService.fetchForecastForDay(this.cityDetail.cityName, this.cityDetail.locationKey);
+    this.showForecastPopup = false;
   }
   // getCountryListForRegion(regionId: string) {
   //   this.apiService.fetchCountryList(regionId).subscribe((data: CountryIntf[]) => {
   //     this.countryList = data;
   //   });
   // }
+}
+
+interface CityDetailIntf {
+  cityName: string;
+  locationKey: string;
 }

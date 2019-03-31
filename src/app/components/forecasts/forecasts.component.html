@@ -8,21 +8,17 @@
 </div>
 
 <div class="add_forecasts__popup" *ngIf="showForecastPopup">
-  <div class="region_select_container">
+  <div class="region_select_container square-shadow">
+    <h2>Select City from the list</h2>
     <form (ngSubmit)="addForecast()" [formGroup]="forecastForm">
-      <mat-form-field>
+      <mat-form-field class="form_field">
         <mat-label>Select City</mat-label>
         <select matNativeControl required (change)="setCityForForecast($event.target)" formControlName="city">
-          <option [value]="city.Key"  *ngFor="let city of topCities">{{city.EnglishName}}
+          <option [value]="city.Key" *ngFor="let city of topCities">{{city.EnglishName}}
           </option>
         </select>
       </mat-form-field>
-      <!-- <mat-form-field *ngIf="countryList?.length">
-        <mat-label>Country</mat-label>
-        <select matNativeControl required formControlName="country">
-          <option [value]="country.ID" *ngFor="let country of countryList">{{country.EnglishName}}</option>
-        </select>
-      </mat-form-field> -->
+      <button class="cta" type="submit">Save</button>
     </form>
   </div>
 </div>
