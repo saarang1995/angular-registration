@@ -13,6 +13,7 @@ export class DatabaseService {
   private STORAGE_REGION_LIST = "RegionList";
   private STORAGE_KEY_USER = "UserDetails";
   private STORAGE_DAILY_FORECAST = "DailyForecast";
+  private STORAGE_TOP_CITIES = 'TopCities';
 
   private userDetails: UserDetailsIntf;
 
@@ -24,6 +25,10 @@ export class DatabaseService {
 
   private userDetailsChangeEvent: Subject<null> = new Subject<null>();
   userDetailsChangeEvent$: Observable<null> = this.userDetailsChangeEvent.asObservable();
+
+
+  public topCitiesChangeEvent: Subject<null> = new Subject<null>();
+  topCitiesChangeEvent$: Observable<null> = this.topCitiesChangeEvent.asObservable();
 
   constructor(
     private geocoderService: GeocoderService
@@ -103,11 +108,27 @@ export class DatabaseService {
     }
   }
 
-  setDailyForecasts(data) {
-    StorageService.set(this.STORAGE_DAILY_FORECAST,data);
+  addDailyForecast(cityName, data) {
+    data.cityName = cityName;
+    const existingData = StorageService.get(this.STORAGE_DAILY_FORECAST);
+    StorageService.set(this.STORAGE_DAILY_FORECAST, [data, ...existingData]);
   }
 
   getDailyForecasts(): RegionIntf[] {
     return StorageService.get(this.STORAGE_DAILY_FORECAST);
+  }
+
+  setTopCities(data: any) {
+    StorageService.set(this.STORAGE_TOP_CITIES, data);
+    this.topCitiesChangeEvent.next();
+  }
+  getTopCities() {
+    const topCityData = StorageService.get(this.STORAGE_TOP_CITIES);
+    if (topCityData) {
+      return topCityData;
+    }
+    else {
+      return [];
+    }
   }
 }

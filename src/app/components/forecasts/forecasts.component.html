@@ -9,12 +9,20 @@
 
 <div class="add_forecasts__popup" *ngIf="showForecastPopup">
   <div class="region_select_container">
-    <h4>Select Region</h4>
-    <mat-form-field>
-      <mat-label>Region</mat-label>
-      <select matNativeControl required>
-        <option [value]="region.ID" *ngFor="let region of regionList">{{region.EnglishName}}</option>
-      </select>
-    </mat-form-field>
+    <form (ngSubmit)="addForecast()" [formGroup]="forecastForm">
+      <mat-form-field>
+        <mat-label>Select City</mat-label>
+        <select matNativeControl required (change)="setCityForForecast($event.target)" formControlName="city">
+          <option [value]="city.Key"  *ngFor="let city of topCities">{{city.EnglishName}}
+          </option>
+        </select>
+      </mat-form-field>
+      <!-- <mat-form-field *ngIf="countryList?.length">
+        <mat-label>Country</mat-label>
+        <select matNativeControl required formControlName="country">
+          <option [value]="country.ID" *ngFor="let country of countryList">{{country.EnglishName}}</option>
+        </select>
+      </mat-form-field> -->
+    </form>
   </div>
 </div>

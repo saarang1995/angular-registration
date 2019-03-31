@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 export class ApiService {
 
   FETCH_REGION_REQUEST = ConstantService.BASE_URL + 'regions';
-  FORECAST_DAY = ConstantService.BASE_URL + 'daily/1day/'
+  FETCH_FORECAST_DAY = ConstantService.FORECAST_BASE_URL + 'daily/1day/';
+  FETCH_COUNTRY_LIST = ConstantService.BASE_URL + 'countries/';
+  FETCH_TOP_COUNTRY_LIST = ConstantService.BASE_URL + 'topcities/50';
+
   constructor(
     private http: HttpClient,
     private databaseService: DatabaseService,
@@ -28,13 +31,33 @@ export class ApiService {
         });
   }
 
-  fetchForecastForDay(locationKey: number) {
+  fetchForecastForDay(cityName: string, locationKey: string) {
     return this.http.
-    get(this.FORECAST_DAY + locationKey).
-    subscribe(
-      (data: any) => {
-        this.databaseService.setDailyForecasts(data);
-      });
+      get(this.FETCH_FORECAST_DAY + locationKey).
+      subscribe(
+        (data: any) => {
+          this.databaseService.addDailyForecast(cityName, data);
+        });
+  }
+
+  fetchCountryList(regionID: string) {
+    return this.http.
+      get(this.FETCH_COUNTRY_LIST + regionID);
+  }
+
+  fetchTopCities() {
+    const topCities = this.databaseService.getTopCities();
+    if (topCities && topCities.length) {
+      this.databaseService.topCitiesChangeEvent.next();
+      return;
+    }
+    else {
+      return this.http.
+        get(this.FETCH_TOP_COUNTRY_LIST).subscribe(
+          (data) => {
+            this.databaseService.setTopCities(data);
+          });
+    }
   }
 
   logoutUser(shouldRedirectToLoginPage: boolean) {
