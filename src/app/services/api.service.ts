@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ApiService {
 
   FETCH_REGION_REQUEST = ConstantService.BASE_URL + 'regions';
-
+  FORECAST_DAY = ConstantService.BASE_URL + 'daily/1day/'
   constructor(
     private http: HttpClient,
     private databaseService: DatabaseService,
@@ -26,6 +26,15 @@ export class ApiService {
           this.databaseService.setRegionList(data);
         }, error => {
         });
+  }
+
+  fetchForecastForDay(locationKey: number) {
+    return this.http.
+    get(this.FORECAST_DAY + locationKey).
+    subscribe(
+      (data: any) => {
+        this.databaseService.setDailyForecasts(data);
+      });
   }
 
   logoutUser(shouldRedirectToLoginPage: boolean) {

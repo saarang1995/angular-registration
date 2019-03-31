@@ -12,6 +12,7 @@ export class DatabaseService {
 
   private STORAGE_REGION_LIST = "RegionList";
   private STORAGE_KEY_USER = "UserDetails";
+  private STORAGE_DAILY_FORECAST = "DailyForecast";
 
   private userDetails: UserDetailsIntf;
 
@@ -100,6 +101,13 @@ export class DatabaseService {
     else {
       return { status: "Not Registered" };
     }
+  }
 
+  setDailyForecasts(data) {
+    StorageService.set(this.STORAGE_DAILY_FORECAST,data);
+  }
+
+  getDailyForecasts(): RegionIntf[] {
+    return StorageService.get(this.STORAGE_DAILY_FORECAST);
   }
 }

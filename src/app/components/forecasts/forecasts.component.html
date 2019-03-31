@@ -2,11 +2,19 @@
   <app-navbar></app-navbar>
   <div class="forecast_cards__container">
     <div class="add_forecasts__container" *ngIf="!existingForecastPreferences">
-      <button class="cta">Add a place</button>
+      <button class="cta" *ngIf="!showForecastPopup" (click)="showAddForecastPopup(true)">Add a place</button>
     </div>
   </div>
 </div>
 
-<div class="add_forecasts__popup">
-  
+<div class="add_forecasts__popup" *ngIf="showForecastPopup">
+  <div class="region_select_container">
+    <h4>Select Region</h4>
+    <mat-form-field>
+      <mat-label>Region</mat-label>
+      <select matNativeControl required>
+        <option [value]="region.ID" *ngFor="let region of regionList">{{region.EnglishName}}</option>
+      </select>
+    </mat-form-field>
+  </div>
 </div>
