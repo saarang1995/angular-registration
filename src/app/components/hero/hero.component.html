@@ -2,6 +2,6 @@
   <div class="hero__wrapper">
     <span class="welcome-heading"> Welcome to </span><br />
     <span class="welcome-product-name"> - RecknWeather -</span>
-    <a class="cta">Login</a>
+    <a class="cta" routerLink="/login" *ngIf="!isUserLoggerIn">Login</a>
   </div>
 </div>

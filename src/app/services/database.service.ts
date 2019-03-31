@@ -6,6 +6,7 @@ import { Subject, Observable } from 'rxjs';
 import { UserDetailsIntf } from '../interfaces/user-details-intf';
 import { AuthResponse } from '../interfaces/auth-response-intf';
 import { ForecastIntf } from '../interfaces/forecast-intf';
+import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -111,10 +112,22 @@ export class DatabaseService {
     }
   }
 
-  addDailyForecast(cityName, data) {
-    data.cityName = cityName;
-    const existingData = StorageService.get(this.STORAGE_DAILY_FORECAST);
-    StorageService.set(this.STORAGE_DAILY_FORECAST, [data, ...existingData]);
+  addDailyForecast(cityName: string, locationKey: string, newData: ForecastIntf) {
+    newData.cityName = cityName;
+    newData.locationKey = locationKey;
+    const existingData = StorageService.get(this.STORAGE_DAILY_FORECAST) as ForecastIntf[];
+    if (existingData) {
+      const indexFromExistingData = existingData.findIndex(d => d.locationKey == locationKey);
+      if (indexFromExistingData) {
+        existingData[indexFromExistingData] = newData;
+        StorageService.set(this.STORAGE_DAILY_FORECAST, [existingData]);
+        return;
+      }
+      StorageService.set(this.STORAGE_DAILY_FORECAST, [newData, ...existingData]);
+    }
+    else {
+      StorageService.set(this.STORAGE_DAILY_FORECAST, [newData]);
+    }
     this.forecastListChangeEvent.next();
   }
 

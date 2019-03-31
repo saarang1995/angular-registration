@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-hero',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroComponent implements OnInit {
 
-  constructor() { }
+  isUserLoggerIn: boolean = false;
+
+  constructor(
+    private databaseService: DatabaseService
+  ) { }
 
   ngOnInit() {
+    this.isUserLoggerIn = this.databaseService.isUserLoggedIn();
   }
 
 }

@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class ApiService {
 
-  FETCH_REGION_REQUEST = ConstantService.BASE_URL + 'regions';
-  FETCH_FORECAST_DAY = ConstantService.FORECAST_BASE_URL + 'daily/1day/';
-  FETCH_COUNTRY_LIST = ConstantService.BASE_URL + 'countries/';
-  FETCH_TOP_COUNTRY_LIST = ConstantService.BASE_URL + 'topcities/50';
+  private FETCH_REGION_REQUEST = ConstantService.BASE_URL + 'regions';
+  private FETCH_FORECAST_DAY = ConstantService.FORECAST_BASE_URL + 'daily/1day/';
+  private FETCH_COUNTRY_LIST = ConstantService.BASE_URL + 'countries/';
+  private FETCH_TOP_COUNTRY_LIST = ConstantService.BASE_URL + 'topcities/50';
 
   constructor(
     private http: HttpClient,
@@ -36,7 +36,7 @@ export class ApiService {
       get(this.FETCH_FORECAST_DAY + locationKey).
       subscribe(
         (data: any) => {
-          this.databaseService.addDailyForecast(cityName, data);
+          this.databaseService.addDailyForecast(cityName, locationKey, data);
         });
   }
 
