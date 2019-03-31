@@ -5,6 +5,7 @@ import { GeocoderService } from './geocoder-service.service';
 import { Subject, Observable } from 'rxjs';
 import { UserDetailsIntf } from '../interfaces/user-details-intf';
 import { AuthResponse } from '../interfaces/auth-response-intf';
+import { ForecastIntf } from '../interfaces/forecast-intf';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,9 +27,11 @@ export class DatabaseService {
   private userDetailsChangeEvent: Subject<null> = new Subject<null>();
   userDetailsChangeEvent$: Observable<null> = this.userDetailsChangeEvent.asObservable();
 
-
   public topCitiesChangeEvent: Subject<null> = new Subject<null>();
   topCitiesChangeEvent$: Observable<null> = this.topCitiesChangeEvent.asObservable();
+
+  public forecastListChangeEvent: Subject<null> = new Subject<null>();
+  forecastListChangeEvent$: Observable<null> = this.forecastListChangeEvent.asObservable();
 
   constructor(
     private geocoderService: GeocoderService
@@ -112,9 +115,10 @@ export class DatabaseService {
     data.cityName = cityName;
     const existingData = StorageService.get(this.STORAGE_DAILY_FORECAST);
     StorageService.set(this.STORAGE_DAILY_FORECAST, [data, ...existingData]);
+    this.forecastListChangeEvent.next();
   }
 
-  getDailyForecasts(): RegionIntf[] {
+  getDailyForecasts(): ForecastIntf[] {
     return StorageService.get(this.STORAGE_DAILY_FORECAST);
   }
 
