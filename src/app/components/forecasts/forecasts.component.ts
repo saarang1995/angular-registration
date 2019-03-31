@@ -49,7 +49,7 @@ export class ForecastsComponent implements OnInit {
     }
     const todayDate = new Date(Date.now()).getDate();
     forecastList.forEach(forecast => {
-      if(!forecast){
+      if (!forecast) {
         return;
       }
       if (todayDate == new Date(forecast.Headline.EffectiveDate).getDate()) {
@@ -87,6 +87,19 @@ export class ForecastsComponent implements OnInit {
   addForecast() {
     this.apiService.fetchForecastForDay(this.cityDetail.cityName, this.cityDetail.locationKey);
     this.showForecastPopup = false;
+  }
+  getFormattedMinimumTemperature(forecast: ForecastIntf) {
+    const minimumTemp = forecast.DailyForecasts[0].Temperature.Minimum.Value + ' ' + forecast.DailyForecasts[0].Temperature.Minimum.Unit;
+    if(minimumTemp){
+      return minimumTemp;
+    }
+  }
+  getFormattedMaximumTemperature(forecast: ForecastIntf){
+    const minimumTemp = forecast.DailyForecasts[0].Temperature.Maximum.Value + ' ' + forecast.DailyForecasts[0].Temperature.Maximum.Unit;
+    if(minimumTemp){
+      return minimumTemp;
+    }
+
   }
 }
 

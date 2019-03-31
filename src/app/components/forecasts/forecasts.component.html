@@ -7,7 +7,8 @@
           <h2>{{forecast?.cityName}}</h2>
         </div>
         <div class="forecast_temp">
-          <span class="temp_value">getFormattedTemperature(forecast)</span>
+          <span class="temp_value">{{getFormattedMinimumTemperature(forecast)}}</span>
+          <span class="temp_value">{{getFormattedMaximumTemperature(forecast)}}</span>
         </div>
       </div>
 
