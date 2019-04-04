@@ -118,9 +118,9 @@ export class DatabaseService {
     const existingData = StorageService.get(this.STORAGE_DAILY_FORECAST) as ForecastIntf[];
     if (existingData) {
       const indexFromExistingData = existingData.findIndex(d => d.locationKey == locationKey);
-      if (indexFromExistingData) {
+      if (indexFromExistingData != -1) {
         existingData[indexFromExistingData] = newData;
-        StorageService.set(this.STORAGE_DAILY_FORECAST, [existingData]);
+        StorageService.set(this.STORAGE_DAILY_FORECAST, existingData);
         return;
       }
       StorageService.set(this.STORAGE_DAILY_FORECAST, [newData, ...existingData]);

@@ -44,7 +44,7 @@ export class ForecastsComponent implements OnInit {
 
   private checkForUpdatesInExistingForecastData() {
     const forecastList = this.databaseService.getDailyForecasts();
-    if (!forecastList.length && !forecastList) {
+    if (!forecastList) {
       return;
     }
     const todayDate = new Date(Date.now()).getDate();
