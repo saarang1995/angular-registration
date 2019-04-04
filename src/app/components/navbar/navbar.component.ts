@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class NavbarComponent implements OnInit {
 
   isUserLoggedIn: boolean;
+  @Input() title: string;
   constructor(
     private databaseService: DatabaseService,
     private apiService: ApiService

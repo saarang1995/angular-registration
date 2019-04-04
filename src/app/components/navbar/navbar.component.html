@@ -1,6 +1,7 @@
 <div class="navbar__container">
   <div class="navbar__wrapper">
     <a class="navbar-item" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <span class="title">{{title}}</span>
     <div class="navigators-wrapper" *ngIf="!isUserLoggedIn">
       <a class="navbar-item" routerLink="/login" routerLinkActive="active">Login</a>
       <button class="cta" routerLink="/signup" routerLinkActive="active">Create Account</button>

@@ -44,7 +44,7 @@ export class ForecastsComponent implements OnInit {
 
   private checkForUpdatesInExistingForecastData() {
     const forecastList = this.databaseService.getDailyForecasts();
-    if (!forecastList.length) {
+    if (!forecastList.length && !forecastList) {
       return;
     }
     const todayDate = new Date(Date.now()).getDate();
@@ -89,12 +89,18 @@ export class ForecastsComponent implements OnInit {
     this.showForecastPopup = false;
   }
   getFormattedMinimumTemperature(forecast: ForecastIntf) {
+    if(!forecast){
+      return;
+    }
     const minimumTemp = forecast.DailyForecasts[0].Temperature.Minimum.Value + ' ' + forecast.DailyForecasts[0].Temperature.Minimum.Unit;
     if(minimumTemp){
       return minimumTemp;
     }
   }
   getFormattedMaximumTemperature(forecast: ForecastIntf){
+    if(!forecast){
+      return;
+    }
     const minimumTemp = forecast.DailyForecasts[0].Temperature.Maximum.Value + ' ' + forecast.DailyForecasts[0].Temperature.Maximum.Unit;
     if(minimumTemp){
       return minimumTemp;

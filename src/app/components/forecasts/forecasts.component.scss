@@ -7,6 +7,58 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    .saved_forecasts__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: scroll;
+      width: 100vw;
+
+      .forecast_list_item {
+        width: 20rem;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        height: 20rem;
+        background: #fafafa;
+        border-radius: 0.5rem;
+        margin: 0.8rem;
+        padding: 0.5rem;
+
+        .forecast__cityname {
+          font-size: 1.2rem;
+          opacity: 0.8;
+          text-align: center;
+        }
+        .forecast_details__container {
+          padding: 1rem;
+          .forecast_temp {
+            margin-top: 1rem;
+            h3 {
+              font-size: 1.1rem;
+              color: rgba($color: #000000, $alpha: 0.8);
+              text-align: center;
+            }
+            .temp_value {
+              font-size: 1.1rem;
+              color: rgba($color: #000000, $alpha: 0.6);
+            }
+          }
+          .description {
+            font-size: 1.1rem;
+            color: rgba($color: #000000, $alpha: 0.6);
+            margin-top: 1rem;
+            text-align: left;
+            h3 {
+              font-size: 1.1rem;
+              color: rgba($color: #000000, $alpha: 0.8);
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
     .add_forecasts__container {
     }
   }

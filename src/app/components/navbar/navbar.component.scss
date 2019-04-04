@@ -33,6 +33,11 @@
         transition: 0.1s;
       }
     }
+    .title {
+      color: white;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
     .navigators-wrapper {
       display: flex;
       justify-content: center;

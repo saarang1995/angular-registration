@@ -1,17 +1,23 @@
 <div class="forecasts__container">
-  <app-navbar></app-navbar>
+  <app-navbar title="Weather Forecasts"></app-navbar>
   <div class="forecast_cards__container">
     <div class="saved_forecasts__container">
-      <div class="forecast_list" *ngFor="let forecast of forecastList">
+      <div class="forecast_list_item" *ngFor="let forecast of forecastList">
         <div class="forecast__cityname">
-          <h2>{{forecast?.cityName}}</h2>
+          <h3>{{forecast?.cityName}}</h3>
         </div>
-        <div class="forecast_temp">
-          <span class="temp_value">{{getFormattedMinimumTemperature(forecast)}}</span>
-          <span class="temp_value">{{getFormattedMaximumTemperature(forecast)}}</span>
+        <div class="forecast_details__container">
+          <div class="forecast_temp">
+            <h3>Temperature</h3>
+            <div class="temp_value">Min: {{getFormattedMinimumTemperature(forecast)}}</div>
+            <div class="temp_value">Max: {{getFormattedMaximumTemperature(forecast)}}</div>
+          </div>
+          <div class="description">
+              <h3>Description</h3>
+            <span>{{forecast?.Headline.Text}}</span>
+          </div>
         </div>
       </div>
-
     </div>
     <div class="add_forecasts__container">
       <button class="cta" *ngIf="!showForecastPopup" (click)="showAddForecastPopup(true)">Add a place</button>
