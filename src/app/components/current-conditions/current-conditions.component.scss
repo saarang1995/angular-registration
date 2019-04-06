@@ -1,21 +1,35 @@
 @import "../../styles/common";
 .current_conditions__container {
-    .current_conditions__wrapper {
-        height: calc(100vh - #{$navBarHeight});
-        margin-top: $navBarHeight;
+  .current_conditions__wrapper {
+    height: calc(100vh - #{$navBarHeight});
+    margin-top: $navBarHeight;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .search__container {
+      h2 {
+        font-size: 1.2rem;
+        font-weight: 300;
+      }
+      .search-field {
+        font-size: 1.2rem;
+      }
+      .topcities__dropdown {
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
-        .search__container {
-            h2 {
-                font-size: 1.2rem;
-                font-weight: 300;
-            }
-            .search-field {
-                font-size: 1.2rem;
-            }
-            .filtered_result {}
+        padding: 1rem;
+        background: #000;
+        height: 20rem;
+        overflow-x: scroll;
+        .city {
+          font-size: 0.9rem;
+          font-weight: 300;
+        //   opacity: 0.8;
+          margin-bottom: 0.8rem;
+          color: #fff;
         }
+      }
     }
+  }
 }

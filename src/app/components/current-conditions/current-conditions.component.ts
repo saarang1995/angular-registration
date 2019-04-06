@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-current-conditions',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrentConditionsComponent implements OnInit {
 
-  constructor() { }
+  topCities: any = [];
+
+  constructor(
+    private databaseService: DatabaseService
+  ) { }
 
   ngOnInit() {
+    this.topCities = this.databaseService.getTopCities();
+    this.databaseService.topCitiesChangeEvent$.subscribe(() => {
+      this.topCities = this.databaseService.getTopCities();
+    });
   }
 
 }

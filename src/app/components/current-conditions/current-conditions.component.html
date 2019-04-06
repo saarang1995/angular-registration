@@ -5,10 +5,12 @@
             <h2>Get Current Weather Report</h2>
             <mat-form-field class="search-field">
                 <mat-label>Search</mat-label>
-                <input matInput placeholder="Search for a place">
+                <input matInput placeholder="Search for a place" autocomplete="off">
             </mat-form-field>
-            <div class="filtered_result">
-
+            <div class="topcities__dropdown">
+                <div class="city" *ngFor="let city of topCities">
+                    <span>{{city.EnglishName}}</span>
+                </div>
             </div>
         </div>
     </div>
