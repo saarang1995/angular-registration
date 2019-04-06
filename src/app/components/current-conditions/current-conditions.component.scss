@@ -1,0 +1,21 @@
+@import "../../styles/common";
+.current_conditions__container {
+    .current_conditions__wrapper {
+        height: calc(100vh - #{$navBarHeight});
+        margin-top: $navBarHeight;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .search__container {
+            h2 {
+                font-size: 1.2rem;
+                font-weight: 300;
+            }
+            .search-field {
+                font-size: 1.2rem;
+            }
+            .filtered_result {}
+        }
+    }
+}
