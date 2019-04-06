@@ -43,6 +43,14 @@ const routes: Routes = [
     }
   },
   {
+    path: "current-conditions",
+    canActivate: [AuthenticationGuard],
+    loadChildren: "./modules/current-conditions.module#CurrentConditionsModule",
+    data: {
+      preload: true
+    }
+  },
+  {
     path: "login",
     loadChildren: "./modules/login.module#LoginModule",
     data: {
