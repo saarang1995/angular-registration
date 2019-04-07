@@ -1,17 +1,17 @@
 <div class="current_conditions__container">
-    <app-navbar title="Weather Forecasts"></app-navbar>
-    <div class="current_conditions__wrapper">
-        <div class="search__container">
-            <h2>Get Current Weather Report</h2>
-            <mat-form-field class="search-field">
-                <mat-label>Search</mat-label>
-                <input matInput placeholder="Search for a place" autocomplete="off">
-            </mat-form-field>
-            <div class="topcities__dropdown">
-                <div class="city" *ngFor="let city of topCities">
-                    <span>{{city.EnglishName}}</span>
-                </div>
-            </div>
+  <app-navbar title="Weather Forecasts"></app-navbar>
+  <div class="current_conditions__wrapper">
+    <div class="search__container">
+      <h2>Get Current Weather Report</h2>
+      <mat-form-field class="search-field">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search for a place" autocomplete="off" (input)="filterCities($event.target.value)">
+      </mat-form-field>
+      <div class="topcities__dropdown">
+        <div class="city" *ngFor="let city of topCitiesToShow">
+          <span>{{city.EnglishName}}</span>
         </div>
+      </div>
     </div>
+  </div>
 </div>

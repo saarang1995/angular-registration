@@ -8,26 +8,34 @@
     align-items: center;
     flex-direction: column;
     .search__container {
+      width: 25rem;
       h2 {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         font-weight: 300;
+        width: 100%;
       }
       .search-field {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
+        width: 100%;
       }
       .topcities__dropdown {
         display: flex;
         flex-direction: column;
-        padding: 1rem;
+        padding: 2rem;
         background: #000;
         height: 20rem;
         overflow-x: scroll;
+        width: 100%;
         .city {
-          font-size: 0.9rem;
-          font-weight: 300;
-        //   opacity: 0.8;
+          font-size: 1.2rem;
+          font-size: 1.2rem;
           margin-bottom: 0.8rem;
-          color: #fff;
+          color: rgba($color: #fff, $alpha: 0.7);
+          cursor: pointer;
+          &:hover {
+            color: rgba($color: #fff, $alpha: 1);
+            transition: color 0.5s;
+          }
         }
       }
     }

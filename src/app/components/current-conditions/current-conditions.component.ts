@@ -9,6 +9,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class CurrentConditionsComponent implements OnInit {
 
   topCities: any = [];
+  topCitiesToShow: any = [];
 
   constructor(
     private databaseService: DatabaseService
@@ -16,9 +17,16 @@ export class CurrentConditionsComponent implements OnInit {
 
   ngOnInit() {
     this.topCities = this.databaseService.getTopCities();
+    this.topCitiesToShow = this.topCities;
     this.databaseService.topCitiesChangeEvent$.subscribe(() => {
       this.topCities = this.databaseService.getTopCities();
+      this.topCitiesToShow = this.topCities;
     });
+  }
+
+  filterCities(placeInputText: string) {
+    this.topCitiesToShow =  this.topCities.filter((city)=>{
+      return city.EnglishName.toLowerCase().includes(placeInputText.toLowerCase())});
   }
 
 }
