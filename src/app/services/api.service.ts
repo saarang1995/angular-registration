@@ -14,6 +14,7 @@ export class ApiService {
   private FETCH_FORECAST_DAY = ConstantService.FORECAST_BASE_URL + 'daily/1day/';
   private FETCH_COUNTRY_LIST = ConstantService.BASE_URL + 'countries/';
   private FETCH_TOP_COUNTRY_LIST = ConstantService.BASE_URL + 'topcities/50';
+  private FETCH_CURRENT_CONDITIONS = ConstantService.CURRENT_CONDITIONS_URL;
 
   constructor(
     private http: HttpClient,
@@ -58,6 +59,11 @@ export class ApiService {
             this.databaseService.setTopCities(data);
           });
     }
+  }
+
+  fetchCurrencyConditions(locationKey: number) {
+    return this.http.
+    get(this.FETCH_CURRENT_CONDITIONS + locationKey);
   }
 
   logoutUser(shouldRedirectToLoginPage: boolean) {

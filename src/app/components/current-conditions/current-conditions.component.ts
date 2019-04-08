@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-current-conditions',
@@ -10,9 +11,11 @@ export class CurrentConditionsComponent implements OnInit {
 
   topCities: any = [];
   topCitiesToShow: any = [];
+  selectedCityData: CityDataIntf;
 
   constructor(
-    private databaseService: DatabaseService
+    private databaseService: DatabaseService,
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
@@ -25,8 +28,29 @@ export class CurrentConditionsComponent implements OnInit {
   }
 
   filterCities(placeInputText: string) {
-    this.topCitiesToShow =  this.topCities.filter((city)=>{
-      return city.EnglishName.toLowerCase().includes(placeInputText.toLowerCase())});
+    this.topCitiesToShow = this.topCities.filter((city) => {
+      return city.EnglishName.toLowerCase().includes(placeInputText.toLowerCase())
+    });
   }
 
+  showWeatherReport(city: any) {
+    this.apiService.fetchCurrencyConditions(city.Key).subscribe((response) => {
+      this.selectedCityData = {
+        name: city.EnglishName,
+        countryName: city.Country.EnglishName,
+        WeatherText: response[0].WeatherText,
+        HasPrecipitation: response[0].HasPrecipitation,
+        Temperature: response[0].Temperature.Metric.Value + ' ' + response[0].Temperature.Metric.Unit
+      }
+    });
+  }
+}
+
+
+interface CityDataIntf {
+  name: string,
+  countryName: string,
+  WeatherText: string,
+  HasPrecipitation: string,
+  Temperature: string
 }
