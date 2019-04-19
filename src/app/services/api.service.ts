@@ -5,6 +5,10 @@ import { DatabaseService } from './database.service';
 import { RegionIntf } from '../interfaces/region-Intf';
 import { Router } from '@angular/router';
 import { UserDetailsIntf } from '../interfaces/user-details-intf';
+import { finalize, map, catchError, debounceTime } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { ResponseIntf } from '../interfaces/responseIntf';
+import { HelperService } from './helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +27,8 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private databaseService: DatabaseService,
-    private router: Router
+    private router: Router,
+    private helperService: HelperService
   ) { }
 
   fetchRegionList() {
@@ -82,7 +87,30 @@ export class ApiService {
   }
 
   signUp(userObject: UserDetailsIntf) {
-    return this.http.post(this.LOGIN_ENDPOINT, userObject);
+    return this.http.post(this.LOGIN_ENDPOINT, userObject).pipe(
+      catchError((response:ResponseIntf) => {
+        alert(response.error.message);
+        return throwError(response);
+      })
+    ).subscribe((response: ResponseIntf) => {
+      console.log(response);
+      if (response.success == true) {
+        this.databaseService.setUserDetails({
+          email: userObject.email,
+          password: userObject.password
+        });
+
+        if (!!this.helperService.getRedirectUrl) {
+          this.router.navigateByUrl("");
+        }
+        else {
+          this.helperService.performRedirectIfAny();
+        }
+      }
+      else {
+        alert(response.error.message);
+      }
+    });;
   }
 
   authenticate(token: string) {

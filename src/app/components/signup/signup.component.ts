@@ -4,6 +4,7 @@ import { HelperService } from 'src/app/services/helper.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
+import { ResponseIntf } from 'src/app/interfaces/responseIntf';
 
 @Component({
   selector: 'app-signup',
@@ -43,19 +44,6 @@ export class SignUpComponent implements OnInit {
       name: this.signUpFormGroup.controls.name.value,
       email: this.signUpFormGroup.controls.email.value,
       password: this.signUpFormGroup.controls.password.value
-    }).subscribe((response) => {
-      console.log(response);
     });
-    // this.databaseService.setUserDetails({
-    //   email: this.signUpFormGroup.controls.email.value,
-    //   password: this.signUpFormGroup.controls.password.value
-    // });
-
-    if (!!this.helperService.getRedirectUrl) {
-      this.router.navigateByUrl("");
-    }
-    else {
-      this.helperService.performRedirectIfAny();
-    }
   }
 }

@@ -12,7 +12,7 @@ export class MainInterceptor implements HttpInterceptor {
         const apiKey = ConstantService.API_KEY;
         if (apiKey) {
             const authReq = req.clone({
-                params: req.params.set("token", this.databaseService.getAuthenticationToken())
+                headers: req.headers.set("token", this.databaseService.getAuthenticationToken())
             });
             return next.handle(authReq);
         } else {
