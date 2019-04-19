@@ -76,7 +76,7 @@ export class DatabaseService {
   }
 
   public getAuthenticationToken(): string {
-    return this.authenticationToken;
+    return StorageService.get(this.AUTH_TOKEN);
   }
 
   setUserDetails(user: UserDetailsIntf, saveChangeToStorage: boolean = true) {
@@ -101,7 +101,7 @@ export class DatabaseService {
   }
 
   isUserLoggedIn(): boolean {
-    return !!this.userDetails;
+    return !!this.authenticationToken;
   }
 
   isExistingUser(user: UserDetailsIntf): AuthResponse {

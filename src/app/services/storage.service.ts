@@ -15,7 +15,7 @@ export class StorageService {
 
   static get(key) {
     const item = localStorage.getItem(StorageService.KEY_PREFIX + key);
-    if (item) return JSON.parse(item);
+    if (item && item != 'undefined') return JSON.parse(item);
     else return null;
   }
 

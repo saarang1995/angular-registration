@@ -21,7 +21,8 @@ export class ApiService {
   private FETCH_TOP_COUNTRY_LIST = ConstantService.LOCATION_URL + 'topcities/50';
   private FETCH_CURRENT_CONDITIONS = ConstantService.CURRENT_CONDITIONS_URL;
 
-  private LOGIN_ENDPOINT = ConstantService.API_HOST + 'create_user';
+  private SIGNUP_ENDPOINT = ConstantService.API_HOST + 'create_user';
+  private LOGIN_ENDPOINT = ConstantService.API_HOST + 'login';
   private AUTHENTICATE_ENDPOINT = ConstantService.API_HOST + 'authenticate';
 
   constructor(
@@ -87,18 +88,14 @@ export class ApiService {
   }
 
   signUp(userObject: UserDetailsIntf) {
-    return this.http.post(this.LOGIN_ENDPOINT, userObject).pipe(
-      catchError((response:ResponseIntf) => {
+    return this.http.post(this.SIGNUP_ENDPOINT, userObject).pipe(
+      catchError((response:any) => {
         alert(response.error.message);
         return throwError(response);
       })
     ).subscribe((response: ResponseIntf) => {
-      console.log(response);
       if (response.success == true) {
-        this.databaseService.setUserDetails({
-          email: userObject.email,
-          password: userObject.password
-        });
+        this.databaseService.setAuthenticationToken(response.token);
 
         if (!!this.helperService.getRedirectUrl) {
           this.router.navigateByUrl("");

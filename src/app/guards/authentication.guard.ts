@@ -21,8 +21,9 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     const authenticationToken = this.databaseService.getAuthenticationToken();
-    if (authenticationToken != "") {
+    if (authenticationToken && authenticationToken != "") {
       this.apiService.authenticate(authenticationToken).subscribe((response: { success: boolean, token: string }) => {
+        console.log(response);
         if (response.success) {
           this.databaseService.setAuthenticationToken(response.token);
           return true;

@@ -4,6 +4,7 @@ export interface ResponseIntf {
     ok?: boolean;
     statusText?: string;
     success?: boolean;
+    token?: string
 }
 
 interface ErrorIntf {

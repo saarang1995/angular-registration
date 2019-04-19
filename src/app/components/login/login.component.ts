@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
       ]),
       password: new FormControl("", [
         Validators.required,
-        Validators.minLength(8)
       ])
     });
   }
@@ -43,25 +42,20 @@ export class LoginComponent implements OnInit {
     this.apiService.signIn({
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value
-    }).subscribe((data: { token: string }) => {
-      this.databaseService.setAuthenticationToken(data.token);
-    });
-    
-    const response = this.databaseService.isExistingUser({
-      email: this.loginForm.controls.email.value,
-      password: this.loginForm.controls.password.value
-    });
-
-    if (response.status == "Authorized") {
-      if (!this.helperService.getRedirectUrl) {
-        this.router.navigateByUrl("");
+    }).subscribe((data: { success: boolean, token: string }) => {
+      if (data.success) {
+        this.databaseService.setAuthenticationToken(data.token);
+        if (!this.helperService.getRedirectUrl()) {
+          this.router.navigateByUrl("");
+        }
+        else {
+          this.helperService.performRedirectIfAny();
+        }
       }
       else {
-        this.helperService.performRedirectIfAny();
+        alert('incorrect credentials entered');
       }
-    }
-    else {
-      this.error = response.status;
-    }
+
+    });
   }
 }
