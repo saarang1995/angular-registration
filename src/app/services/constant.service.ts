@@ -9,6 +9,8 @@ export class ConstantService {
   static LOCATION_URL = ConstantService.BASE_URL + 'locations/v1/';
   static FORECAST_URL = ConstantService.BASE_URL + 'forecasts/v1/';
   static CURRENT_CONDITIONS_URL = ConstantService.BASE_URL + 'currentconditions/v1/';
-  static API_KEY = environment.ACCU_WEATHER_API_KEY;
+  static API_KEY = environment;
+  static API_HOST = environment.API_HOST;
+
   constructor() { }
 }

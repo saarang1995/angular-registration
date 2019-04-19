@@ -16,9 +16,9 @@ export class DatabaseService {
   private STORAGE_KEY_USER = "UserDetails";
   private STORAGE_DAILY_FORECAST = "DailyForecast";
   private STORAGE_TOP_CITIES = 'TopCities';
-
+  private AUTH_TOKEN: string = "AuthToken";
   private userDetails: UserDetailsIntf;
-
+  private authenticationToken = "";
   public googleMapsInitialized: Subject<null> = new Subject<null>();
   googleMapsInitialized$: Observable<null> = this.googleMapsInitialized.asObservable();
 
@@ -68,6 +68,15 @@ export class DatabaseService {
         this.setUserDetails(userdata, false);
       }
     }
+  }
+
+  public setAuthenticationToken(token: string) {
+    this.authenticationToken = token;
+    StorageService.set(this.AUTH_TOKEN, token);
+  }
+
+  public getAuthenticationToken(): string {
+    return this.authenticationToken;
   }
 
   setUserDetails(user: UserDetailsIntf, saveChangeToStorage: boolean = true) {

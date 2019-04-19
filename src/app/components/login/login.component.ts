@@ -4,6 +4,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 import { HelperService } from 'src/app/services/helper.service';
 import { Router } from '@angular/router';
 import { UserDetailsIntf } from 'src/app/interfaces/user-details-intf';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private helperService: HelperService,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService
   ) { }
 
   ngOnInit(): void {
@@ -38,12 +40,19 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm() {
+    this.apiService.signIn({
+      email: this.loginForm.controls.email.value,
+      password: this.loginForm.controls.password.value
+    }).subscribe((data: { token: string }) => {
+      this.databaseService.setAuthenticationToken(data.token);
+    });
+    
     const response = this.databaseService.isExistingUser({
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value
     });
 
-    if(response.status == "Authorized"){
+    if (response.status == "Authorized") {
       if (!this.helperService.getRedirectUrl) {
         this.router.navigateByUrl("");
       }
@@ -53,6 +62,6 @@ export class LoginComponent implements OnInit {
     }
     else {
       this.error = response.status;
-    }   
+    }
   }
 }
