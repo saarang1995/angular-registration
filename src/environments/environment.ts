@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   ACCU_WEATHER_API_KEY: 'KpGujZuD8lj8xle9beOkCVsGZbsgaDnT',
-  API_HOST: 'https://guarded-tor-13155.herokuapp.com/',
-  // API_HOST: 'http://localhost:3000/'
+  // API_HOST: 'https://guarded-tor-13155.herokuapp.com/',
+  API_HOST: 'http://localhost:3000/'
 };
 
 /*
