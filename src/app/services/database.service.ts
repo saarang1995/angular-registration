@@ -101,7 +101,7 @@ export class DatabaseService {
   }
 
   isUserLoggedIn(): boolean {
-    return !!this.authenticationToken;
+    return !!this.getAuthenticationToken();
   }
 
   isExistingUser(user: UserDetailsIntf): AuthResponse {

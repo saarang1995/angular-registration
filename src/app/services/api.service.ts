@@ -80,7 +80,8 @@ export class ApiService {
     if (shouldRedirectToLoginPage) {
       this.router.navigateByUrl('/login');
     }
-    this.databaseService.deleteUserDetails();
+    this.databaseService.setAuthenticationToken('');
+    // this.databaseService.deleteUserDetails();
   }
 
   signIn(userObject: UserDetailsIntf) {
@@ -89,7 +90,7 @@ export class ApiService {
 
   signUp(userObject: UserDetailsIntf) {
     return this.http.post(this.SIGNUP_ENDPOINT, userObject).pipe(
-      catchError((response:any) => {
+      catchError((response: any) => {
         alert(response.error.message);
         return throwError(response);
       })
