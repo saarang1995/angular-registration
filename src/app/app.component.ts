@@ -20,6 +20,7 @@ export class AppComponent {
   ngOnInit(): void {
     window["initMap"] = () => {
       this.databaseService.googleMapsInitialized.next();
+      this.apiService.fetchTopCities();
       if (!StorageService.get(this.STORAGE_REGION_LIST)) {
         this.apiService.fetchRegionList();
       }

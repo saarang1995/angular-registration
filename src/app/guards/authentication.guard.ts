@@ -22,18 +22,7 @@ export class AuthenticationGuard implements CanActivate {
 
     const authenticationToken = this.databaseService.getAuthenticationToken();
     if (authenticationToken && authenticationToken != "") {
-      this.apiService.authenticate(authenticationToken).subscribe((response: { success: boolean, token: string }) => {
-        console.log(response);
-        if (response.success) {
-          this.databaseService.setAuthenticationToken(response.token);
-          return true;
-        }
-        else {
-          this.databaseService.setAuthenticationToken("");
-          this.router.navigateByUrl('/login');
-          return false;
-        }
-      });
+      return true;
     }
     else {
       this.router.navigateByUrl('/login');

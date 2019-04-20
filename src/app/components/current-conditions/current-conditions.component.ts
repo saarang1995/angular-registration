@@ -34,13 +34,16 @@ export class CurrentConditionsComponent implements OnInit {
   }
 
   showWeatherReport(city: any) {
-    this.apiService.fetchCurrencyConditions(city.Key).subscribe((response) => {
-      this.selectedCityData = {
-        name: city.EnglishName,
-        countryName: city.Country.EnglishName,
-        WeatherText: response[0].WeatherText,
-        HasPrecipitation: response[0].HasPrecipitation,
-        Temperature: response[0].Temperature.Metric.Value + ' ' + response[0].Temperature.Metric.Unit
+    this.apiService.fetchCurrencyConditions(city.Key).subscribe((data: { success: boolean, message: any }) => {
+      if (data.success) {
+        const response = data.message;
+        this.selectedCityData = {
+          name: city.EnglishName,
+          countryName: city.Country.EnglishName,
+          WeatherText: response[0].WeatherText,
+          HasPrecipitation: response[0].HasPrecipitation,
+          Temperature: response[0].Temperature.Metric.Value + ' ' + response[0].Temperature.Metric.Unit
+        }
       }
     });
   }

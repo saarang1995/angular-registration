@@ -94,6 +94,8 @@ export class DatabaseService {
   deleteUserDetails() {
     this.setUserDetails(null, false);
     StorageService.delete(this.STORAGE_KEY_USER);
+    this.setAuthenticationToken("");
+    StorageService.delete(this.AUTH_TOKEN);
   }
 
   getUserDetails(): UserDetailsIntf {

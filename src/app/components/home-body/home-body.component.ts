@@ -15,7 +15,6 @@ export class HomeBodyComponent implements OnInit {
   ngOnInit() {
   }
   setRedirectUrl(url: string) {
-    debugger;
     this.helperService.setRedirectUrl(url);
   }
 }

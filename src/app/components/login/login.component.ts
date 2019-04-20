@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
     }).subscribe((data: { success: boolean, token: string }) => {
       if (data.success) {
         this.databaseService.setAuthenticationToken(data.token);
+        console.log(this.helperService);
         if (!this.helperService.getRedirectUrl()) {
           this.router.navigateByUrl("");
         }

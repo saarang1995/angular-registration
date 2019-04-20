@@ -15,11 +15,11 @@ import { HelperService } from './helper.service';
 })
 export class ApiService {
 
-  private FETCH_REGION_REQUEST = ConstantService.LOCATION_URL + 'regions';
-  private FETCH_FORECAST_DAY = ConstantService.FORECAST_URL + 'daily/1day/';
-  private FETCH_COUNTRY_LIST = ConstantService.LOCATION_URL + 'countries/';
-  private FETCH_TOP_COUNTRY_LIST = ConstantService.LOCATION_URL + 'topcities/50';
-  private FETCH_CURRENT_CONDITIONS = ConstantService.CURRENT_CONDITIONS_URL;
+  private FETCH_REGION_REQUEST = ConstantService.API_HOST + 'fetch_regions';
+  private FETCH_FORECAST_DAY = ConstantService.API_HOST + 'fetch_forecast_of_day';
+  private FETCH_COUNTRY_LIST = ConstantService.API_HOST + 'fetch_countries';
+  private FETCH_TOP_COUNTRY_LIST = ConstantService.API_HOST + 'fetch_top_cities';
+  private FETCH_CURRENT_CONDITIONS = ConstantService.API_HOST + 'current_conditions';
 
   private SIGNUP_ENDPOINT = ConstantService.API_HOST + 'create_user';
   private LOGIN_ENDPOINT = ConstantService.API_HOST + 'login';
@@ -32,28 +32,39 @@ export class ApiService {
     private helperService: HelperService
   ) { }
 
+  tokenExpired(data) {
+    alert(data.error.message);
+    this.router.navigateByUrl('/login');
+  }
   fetchRegionList() {
     return this.http.
-      get(this.FETCH_REGION_REQUEST).
+      post(this.FETCH_REGION_REQUEST, {}).
       subscribe(
-        (data: RegionIntf[]) => {
-          this.databaseService.setRegionList(data);
+        (data: { success: boolean, message: RegionIntf[] }) => {
+          if (data.success) {
+            this.databaseService.setRegionList(data.message);          }
+
         }, error => {
         });
   }
 
   fetchForecastForDay(cityName: string, locationKey: string) {
     return this.http.
-      get(this.FETCH_FORECAST_DAY + locationKey).
+      post(this.FETCH_FORECAST_DAY, { locationKey: locationKey }).
       subscribe(
-        (data: any) => {
-          this.databaseService.addDailyForecast(cityName, locationKey, data);
+        (data: { success: boolean, message: any }) => {
+          if (data.success) {
+            this.databaseService.addDailyForecast(cityName, locationKey, data.message);
+          }
+
+        }, error => {
+          this.tokenExpired(error);
         });
   }
 
   fetchCountryList(regionID: string) {
     return this.http.
-      get(this.FETCH_COUNTRY_LIST + regionID);
+      post(this.FETCH_COUNTRY_LIST, { regionID: regionID });
   }
 
   fetchTopCities() {
@@ -64,24 +75,25 @@ export class ApiService {
     }
     else {
       return this.http.
-        get(this.FETCH_TOP_COUNTRY_LIST).subscribe(
-          (data) => {
-            this.databaseService.setTopCities(data);
+        post(this.FETCH_TOP_COUNTRY_LIST, {}).subscribe(
+          (data: { success: boolean, message: any }) => {
+            if (data.success) {
+              this.databaseService.setTopCities(data.message);
+            }
           });
     }
   }
 
   fetchCurrencyConditions(locationKey: number) {
     return this.http.
-      get(this.FETCH_CURRENT_CONDITIONS + locationKey);
+      post(this.FETCH_CURRENT_CONDITIONS, { locationKey: locationKey });
   }
 
   logoutUser(shouldRedirectToLoginPage: boolean) {
     if (shouldRedirectToLoginPage) {
       this.router.navigateByUrl('/login');
     }
-    this.databaseService.setAuthenticationToken('');
-    // this.databaseService.deleteUserDetails();
+    this.databaseService.deleteUserDetails();
   }
 
   signIn(userObject: UserDetailsIntf) {
