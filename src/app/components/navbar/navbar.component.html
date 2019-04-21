@@ -9,9 +9,9 @@
     <div class="profile-wrapper" *ngIf="isUserLoggedIn">
       <img src="assets/icons/account.svg" alt="Profile" [matMenuTriggerFor]="menu">
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <!-- <button mat-menu-item>
           <span>Profile</span>
-        </button>
+        </button> -->
         <button mat-menu-item (click)="logoutUser()">
           <span>Logout</span>
         </button>
