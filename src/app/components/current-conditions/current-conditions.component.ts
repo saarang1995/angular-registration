@@ -12,7 +12,10 @@ export class CurrentConditionsComponent implements OnInit {
   topCities: any = [];
   topCitiesToShow: any = [];
   selectedCityData: CityDataIntf;
-
+  showDropDown: boolean = false;
+  showReport: boolean = false;
+  generatingReport: boolean = false;
+  defaultReportText: boolean = true;
   constructor(
     private databaseService: DatabaseService,
     private apiService: ApiService
@@ -34,9 +37,14 @@ export class CurrentConditionsComponent implements OnInit {
   }
 
   showWeatherReport(city: any) {
+    this.showReport = false;
+    this.generatingReport = true;
+    this.defaultReportText = false;
     this.apiService.fetchCurrencyConditions(city.Key).subscribe((data: { success: boolean, message: any }) => {
       if (data.success) {
         const response = data.message;
+        this.showReport = true;
+        this.generatingReport = false;
         this.selectedCityData = {
           name: city.EnglishName,
           countryName: city.Country.EnglishName,
@@ -46,6 +54,10 @@ export class CurrentConditionsComponent implements OnInit {
         }
       }
     });
+  }
+
+  toggleDropDown(){
+    this.showDropDown = !this.showDropDown;
   }
 }
 
