@@ -1,24 +1,24 @@
 <app-navbar></app-navbar>
 <div class="login__container">
-  <div class="form__wrapper">
-    <div class="inner__wrapper square-shadow">
-      <div class="title">
-        <span>Sign In</span>
-      </div>
-      <form class="login-form" (ngSubmit)="submitForm()" [formGroup]="loginForm">
-        <mat-form-field class="form-field" appearance="standard">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="email" name="email" placeholder="Enter your Email">
-        </mat-form-field>
-        <mat-form-field class="form-field" appearance="standard">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" name="password" placeholder="Enter your Password">
-        </mat-form-field>
-        <div class="error__wrapper" *ngIf="!!error">
-          <p>{{error}}</p>
+    <div class="form__wrapper">
+        <div class="inner__wrapper square-shadow">
+            <div class="title">
+                <span>Sign In</span>
+            </div>
+            <form class="login-form" (ngSubmit)="submitForm()" [formGroup]="loginForm">
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email" name="email" placeholder="Enter your Email">
+                </mat-form-field>
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password" name="password" placeholder="Enter your Password">
+                </mat-form-field>
+                <div class="error__wrapper" *ngIf="!!error">
+                    <p>{{error}}</p>
+                </div>
+                <button [disabled]="loginForm.invalid" type="submit" [ngClass]="{'cta-disabled': loginForm.invalid}" class="cta" mat-raised-button>Login</button>
+            </form>
         </div>
-        <button [disabled]="loginForm.invalid" type="submit" [ngClass]="{'cta-disabled': loginForm.invalid}" class="cta" mat-raised-button>Login</button>
-      </form>
     </div>
-  </div>
 </div>
